@@ -1,0 +1,200 @@
+```html
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Luxury TV Screen</title>
+
+<style>
+
+html, body{
+    margin:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#050505;
+}
+
+/* TV Frame */
+
+#tv{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-52%);
+    width:98vw;
+    height:94vh;
+    padding:10px;
+    box-sizing:border-box;
+    border-radius:18px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #111 0%,
+        #666 10%,
+        #bbb 20%,
+        #444 35%,
+        #222 50%,
+        #777 70%,
+        #111 100%
+    );
+
+    box-shadow:
+        0 0 30px rgba(0,0,0,.9),
+        0 0 80px rgba(0,0,0,.6),
+        inset 0 0 10px rgba(255,255,255,.25);
+}
+
+/* Scherm */
+
+#screen{
+    position:relative;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    border-radius:10px;
+    background:black;
+}
+
+/* Startafbeelding */
+
+#startImage{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:2;
+}
+
+/* Video */
+
+iframe{
+    width:100%;
+    height:100%;
+    border:none;
+    position:relative;
+    z-index:1;
+}
+
+/* LED */
+
+#screen:after{
+    content:"";
+    position:absolute;
+    bottom:6px;
+    left:50%;
+    transform:translateX(-50%);
+    width:120px;
+    height:4px;
+    border-radius:4px;
+    background:#00c8ff;
+    box-shadow:
+        0 0 10px #00c8ff,
+        0 0 20px #00c8ff,
+        0 0 30px #00c8ff;
+    z-index:5;
+}
+
+/* Power knop */
+
+#powerBtn{
+    position:absolute;
+    left:50%;
+    bottom:12px;
+    transform:translateX(-50%);
+
+    width:58px;
+    height:58px;
+
+    border:none;
+    border-radius:50%;
+
+    background:#111;
+    color:#ff4444;
+
+    font-size:30px;
+    cursor:pointer;
+
+    box-shadow:
+        0 0 12px rgba(0,0,0,.8),
+        inset 0 0 8px rgba(255,255,255,.15);
+
+    transition:.2s;
+}
+
+#powerBtn:hover{
+    background:#222;
+    transform:translateX(-50%) scale(1.08);
+}
+
+#powerBtn.on{
+    color:#00ff66;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="tv">
+
+    <div id="screen">
+
+        <img id="startImage"
+             src="U2.jpg"
+             alt="Startscherm">
+
+        <iframe
+            id="player"
+            src=""
+            allow="autoplay; fullscreen"
+            allowfullscreen>
+        </iframe>
+
+    </div>
+
+</div>
+
+<button id="powerBtn">⏻</button>
+
+<script>
+
+const player = document.getElementById("player");
+const button = document.getElementById("powerBtn");
+const startImage = document.getElementById("startImage");
+
+const videoURL =
+"https://www.youtube.com/embed/fDZYQD1GDd4?autoplay=1&controls=0&loop=1&playlist=fDZYQD1GDd4&mute=1&rel=0&modestbranding=1&fs=1";
+
+let tvOn = false;
+
+button.addEventListener("click", () => {
+
+    if(tvOn){
+
+        player.src = "";
+        startImage.style.display = "block";
+        button.classList.remove("on");
+
+    }else{
+
+        startImage.style.display = "none";
+        player.src = videoURL;
+        button.classList.add("on");
+
+    }
+
+    tvOn = !tvOn;
+
+});
+
+</script>
+
+</body>
+</html>
+```
