@@ -9,26 +9,26 @@
 
 <style>
 
-html, body{
-    margin:0;
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    background:#050505;
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #050505;
 }
 
 /* TV Frame */
 
-#tv{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-52%);
-    width:98vw;
-    height:94vh;
-    padding:10px;
-    box-sizing:border-box;
-    border-radius:18px;
+#tv {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -52%);
+    width: 98vw;
+    height: 94vh;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 18px;
 
     background:
     linear-gradient(
@@ -50,13 +50,13 @@ html, body{
 
 /* Scherm */
 
-#screen{
-    position:relative;
-    width:100%;
-    height:100%;
-    overflow:hidden;
-    border-radius:10px;
-    background:black;
+#screen {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    background: black;
 }
 
 /* Startafbeelding */
@@ -71,38 +71,45 @@ html, body{
     z-index:2;
 }
 
-/* Video */
+/* LED onder */
 
-iframe{
-    width:100%;
-    height:100%;
-    border:none;
-    position:relative;
-    z-index:1;
-}
+#screen:after {
+    content: "";
 
-/* LED */
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
 
-#screen:after{
-    content:"";
-    position:absolute;
-    bottom:6px;
-    left:50%;
-    transform:translateX(-50%);
-    width:120px;
-    height:4px;
-    border-radius:4px;
-    background:#00c8ff;
+    width: 120px;
+    height: 4px;
+
+    border-radius: 4px;
+
+    background: #00c8ff;
+
     box-shadow:
         0 0 10px #00c8ff,
         0 0 20px #00c8ff,
         0 0 30px #00c8ff;
-    z-index:5;
+
+    z-index: 3;
+}
+
+/* iframe */
+
+iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    position:relative;
+    z-index:1;
 }
 
 /* Power knop */
 
 #powerBtn{
+
     position:absolute;
     left:50%;
     bottom:12px;
@@ -149,8 +156,7 @@ iframe{
              src="U2.jpg"
              alt="Startscherm">
 
-        <iframe
-            id="player"
+        <iframe id="player"
             src=""
             allow="autoplay; fullscreen"
             allowfullscreen>
@@ -169,7 +175,7 @@ const button = document.getElementById("powerBtn");
 const startImage = document.getElementById("startImage");
 
 const videoURL =
-"https://www.youtube.com/embed/fDZYQD1GDd4?autoplay=1&controls=0&loop=1&playlist=fDZYQD1GDd4&mute=1&rel=0&modestbranding=1&fs=1";
+"https://www.youtube.com/embed/ujNeHIo7oTE?autoplay=1&controls=0&loop=1&playlist=ujNeHIo7oTE,LHcP4MWABGY,e3-5YC_oHjE,z8rQ575DWD8,QmqYQRkszGA,O3CLBIL1J7o,k0W_ybghFzg&rel=0&modestbranding=1&fs=1";
 
 let tvOn = false;
 
@@ -181,7 +187,7 @@ button.addEventListener("click", () => {
         startImage.style.display = "block";
         button.classList.remove("on");
 
-    }else{
+    } else {
 
         startImage.style.display = "none";
         player.src = videoURL;
@@ -198,3 +204,4 @@ button.addEventListener("click", () => {
 </body>
 </html>
 ```
+
