@@ -129,36 +129,34 @@ iframe {
     color:#00ff66;
 }
 
-/* NEXT knop */
-
-/* NEXT knop compact metallic */
+/* NEXT knop rond grijs */
 #nextBtn{
     position:absolute;
-    left:calc(50% + 70px); /* naast power knop */
-    bottom:20px;
+    left:calc(50% + 70px); /* rechts naast power knop */
+    bottom:12px;
 
-    padding:8px 18px;
-    font-size:16px;
-    font-weight:bold;
+    width:58px;
+    height:58px;
 
     border:none;
-    border-radius:20px;
+    border-radius:50%;
 
-    background: linear-gradient(135deg, #ff7a00, #ffb347);
-    color:#111;
+    background:#111;
+    color:white;
 
+    font-size:28px; /* grootte van de pijl */
     cursor:pointer;
 
     box-shadow:
-        0 0 8px rgba(0,0,0,.6),
-        inset 0 0 6px rgba(255,255,255,.25);
+        0 0 12px rgba(0,0,0,.8),
+        inset 0 0 8px rgba(255,255,255,.15);
 
     transition:.2s;
 }
 
 #nextBtn:hover{
+    background:#222;
     transform:scale(1.08);
-    background: linear-gradient(135deg, #ffa033, #ffd28a);
 }
 
 </style>
@@ -185,7 +183,7 @@ iframe {
 </div>
 
 <button id="powerBtn">⏻</button>
-<button id="nextBtn">Next</button>
+<button id="nextBtn">▶</button>
 
 <script>
 
