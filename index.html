@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -75,24 +74,18 @@ html, body {
 
 #screen:after {
     content: "";
-
     position: absolute;
     bottom: 6px;
     left: 50%;
     transform: translateX(-50%);
-
     width: 120px;
     height: 4px;
-
     border-radius: 4px;
-
     background: #00c8ff;
-
     box-shadow:
         0 0 10px #00c8ff,
         0 0 20px #00c8ff,
         0 0 30px #00c8ff;
-
     z-index: 3;
 }
 
@@ -109,28 +102,21 @@ iframe {
 /* Power knop */
 
 #powerBtn{
-
     position:absolute;
     left:50%;
     bottom:12px;
     transform:translateX(-50%);
-
     width:58px;
     height:58px;
-
     border:none;
     border-radius:50%;
-
     background:#111;
     color:#ff4444;
-
     font-size:30px;
     cursor:pointer;
-
     box-shadow:
         0 0 12px rgba(0,0,0,.8),
         inset 0 0 8px rgba(255,255,255,.15);
-
     transition:.2s;
 }
 
@@ -141,6 +127,30 @@ iframe {
 
 #powerBtn.on{
     color:#00ff66;
+}
+
+/* NEXT knop */
+
+#nextBtn{
+    position:absolute;
+    left:50%;
+    bottom:80px;
+    transform:translateX(-50%);
+    padding:10px 22px;
+    font-size:18px;
+    font-weight:bold;
+    border:none;
+    border-radius:8px;
+    background:#444;
+    color:white;
+    cursor:pointer;
+    box-shadow:0 0 10px rgba(0,0,0,.6);
+    transition:.2s;
+}
+
+#nextBtn:hover{
+    background:#666;
+    transform:translateX(-50%) scale(1.08);
 }
 
 </style>
@@ -167,41 +177,67 @@ iframe {
 </div>
 
 <button id="powerBtn">⏻</button>
+<button id="nextBtn">NEXT ▶</button>
 
 <script>
 
 const player = document.getElementById("player");
-const button = document.getElementById("powerBtn");
+const powerBtn = document.getElementById("powerBtn");
+const nextBtn = document.getElementById("nextBtn");
 const startImage = document.getElementById("startImage");
 
-const videoURL =
-"https://www.youtube.com/embed/ujNeHIo7oTE?autoplay=1&controls=0&loop=1&playlist=ujNeHIo7oTE,LHcP4MWABGY,e3-5YC_oHjE,z8rQ575DWD8,QmqYQRkszGA,O3CLBIL1J7o,k0W_ybghFzg&rel=0&modestbranding=1&fs=1";
+const playlist = [
+    "ujNeHIo7oTE",
+    "LHcP4MWABGY",
+    "e3-5YC_oHjE",
+    "z8rQ575DWD8",
+    "QmqYQRkszGA",
+    "O3CLBIL1J7o",
+    "k0W_ybghFzg"
+];
 
+let index = 0;
 let tvOn = false;
 
-button.addEventListener("click", () => {
+function playVideo(i){
+    player.src =
+        "https://www.youtube.com/embed/" +
+        playlist[i] +
+        "?autoplay=1&controls=0&rel=0&modestbranding=1&fs=1";
+}
+
+powerBtn.addEventListener("click", () => {
 
     if(tvOn){
-
+        // UIT
         player.src = "";
         startImage.style.display = "block";
-        button.classList.remove("on");
-
+        powerBtn.classList.remove("on");
+        index = 0; // terug naar eerste nummer
     } else {
-
+        // AAN
         startImage.style.display = "none";
-        player.src = videoURL;
-        button.classList.add("on");
-
+        playVideo(index);
+        powerBtn.classList.add("on");
     }
 
     tvOn = !tvOn;
+});
 
+nextBtn.addEventListener("click", () => {
+    if(!tvOn) return; // werkt alleen als tv aan staat
+
+    index++;
+    if(index >= playlist.length){
+        index = 0; // opnieuw beginnen
+    }
+
+    playVideo(index);
 });
 
 </script>
 
 </body>
 </html>
-```
+
 
