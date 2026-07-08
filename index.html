@@ -131,26 +131,34 @@ iframe {
 
 /* NEXT knop */
 
+/* NEXT knop compact metallic */
 #nextBtn{
     position:absolute;
-    left:50%;
-    bottom:80px;
-    transform:translateX(-50%);
-    padding:10px 22px;
-    font-size:18px;
+    left:calc(50% + 70px); /* naast power knop */
+    bottom:20px;
+
+    padding:8px 18px;
+    font-size:16px;
     font-weight:bold;
+
     border:none;
-    border-radius:8px;
-    background:#444;
-    color:white;
+    border-radius:20px;
+
+    background: linear-gradient(135deg, #ff7a00, #ffb347);
+    color:#111;
+
     cursor:pointer;
-    box-shadow:0 0 10px rgba(0,0,0,.6);
+
+    box-shadow:
+        0 0 8px rgba(0,0,0,.6),
+        inset 0 0 6px rgba(255,255,255,.25);
+
     transition:.2s;
 }
 
 #nextBtn:hover{
-    background:#666;
-    transform:translateX(-50%) scale(1.08);
+    transform:scale(1.08);
+    background: linear-gradient(135deg, #ffa033, #ffd28a);
 }
 
 </style>
@@ -177,7 +185,7 @@ iframe {
 </div>
 
 <button id="powerBtn">⏻</button>
-<button id="nextBtn">NEXT ▶</button>
+<button id="nextBtn">Next</button>
 
 <script>
 
